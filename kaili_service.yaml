@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: kaili-website-service
+  name: kaili-website-service
+spec:
+  ports:
+  - name: port
+    port: 8080
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: kaili-web
+  type: ClusterIP
+status:
+  loadBalancer: {}
+

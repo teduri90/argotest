@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaili-website-deploy
+  labels:
+    app: kaili-website-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kaili-web
+  template:
+    metadata:
+      labels:
+        app: kaili-web
+    spec:
+      containers:
+      - name: kaili
+        image: kaili:v0.9.1
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: 1
+          limits:
+            memory: "2Gi"
+            cpu: 2
+        envFrom:
+        - configMapRef:
+            name: kaili-website-configmap
+        env:
+        - name: TEST_ENV
+          value: TEST_VAL
+        - name: TEST_VALUE_FROM
+          valueFrom:
+            configMapKeyRef:
+              name: kaili-website-configmap
+              key: value_from

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaili-website-configmap
+data:
+  TEST_ENV: test_env_value
+  value_from: test_val_from_value
