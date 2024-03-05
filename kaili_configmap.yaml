@@ -5,3 +5,4 @@ metadata:
 data:
   TEST_ENV: test_env_value
   value_from: test_val_from_value
+  NEW_ENV: test
